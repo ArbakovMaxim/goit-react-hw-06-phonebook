@@ -1,3 +1,5 @@
+import { useDispatch, useSelector } from 'react-redux';
+import { getContacts, deleteContact, getFilter } from 'redux/slice';
 import {
   ContWrapper,
   ContList,
@@ -5,17 +7,30 @@ import {
   BtnDeleteContact,
 } from './Contacts.styled';
 
-export const Contacts = ({ contacts, onDeleteContact }) => {
+export const Contacts = () => {
+  const dispatch = useDispatch();
+  const filter = useSelector(getFilter);
+  const contacts = useSelector(getContacts);
+
+  const filterList = () => {
+    const normalValue = filter.toLowerCase().trim();
+    return contacts.filter(contact =>
+      contact.name.toLowerCase().includes(normalValue)
+    );
+  };
+
+  const contactsList = filterList();
+
   return (
     <ContWrapper>
       <ContList>
-        {contacts.map(contact => {
+        {contactsList.map(contacts => {
           return (
-            <ContItem key={contact.id}>
-              {contact.name}: {contact.number}
+            <ContItem key={contacts.id}>
+              {contacts.name}: {contacts.number}
               <BtnDeleteContact
                 type="button"
-                onClick={() => onDeleteContact(contact.id)}
+                onClick={() => dispatch(deleteContact(contacts.id))}
               >
                 Delete
               </BtnDeleteContact>

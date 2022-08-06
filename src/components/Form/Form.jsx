@@ -1,4 +1,5 @@
 import * as yup from 'yup';
+import { nanoid } from 'nanoid';
 import { Form, Formik } from 'formik';
 import {
   ButtonSubmit,
@@ -7,10 +8,24 @@ import {
   Input,
   Eror,
 } from './Form.styled';
+import { useDispatch, useSelector } from 'react-redux';
+import { addContact, getContacts } from 'redux/slice';
 
-export const FormName = ({ addContact }) => {
+export const FormName = () => {
+  const dispatch = useDispatch();
+  const contacts = useSelector(getContacts);
+
   const hendleSubmit = (values, { resetForm }) => {
-    addContact(values.name, values.number);
+    const newContact = {
+      name: values.name,
+      number: values.number,
+      id: nanoid(),
+    };
+    contacts.find(
+      contact => contact.name.toLowerCase() === values.name.toLowerCase()
+    )
+      ? alert(`${values.name} вже в контактах`)
+      : dispatch(addContact(newContact));
     resetForm();
   };
 
