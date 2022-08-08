@@ -1,7 +1,7 @@
 import * as yup from 'yup';
 import { TitleBlock } from 'components/Form/Form.styled';
 import { useDispatch, useSelector } from 'react-redux';
-import { changeFilter, getFilter } from 'redux/slice';
+import { changeFilter, getFilter } from 'redux/contacts';
 
 let schema = yup.object().shape({
   name: yup.string().required(),

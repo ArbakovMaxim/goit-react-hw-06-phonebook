@@ -1,7 +1,7 @@
-import { Container } from 'ui/Container.styled';
+import { Container } from 'components/ui/Container.styled';
 import { Contacts } from './components/Contacts/Contacts';
 import { FormName } from './components/Form/Form';
-import { Section } from 'ui/Section/Section';
+import { Section } from 'components/ui/Section/Section';
 import { Filter } from 'components/Filter/Filter';
 
 export const App = () => {

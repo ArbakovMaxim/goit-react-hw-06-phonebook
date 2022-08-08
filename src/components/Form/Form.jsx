@@ -9,7 +9,7 @@ import {
   Eror,
 } from './Form.styled';
 import { useDispatch, useSelector } from 'react-redux';
-import { addContact, getContacts } from 'redux/slice';
+import { addContact, getContacts } from 'redux/contacts';
 
 export const FormName = () => {
   const dispatch = useDispatch();

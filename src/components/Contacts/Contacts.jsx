@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { getContacts, deleteContact, getFilter } from 'redux/slice';
+import { getContacts, deleteContact, getFilter } from 'redux/contacts';
 import {
   ContWrapper,
   ContList,
